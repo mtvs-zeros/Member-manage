@@ -1,6 +1,7 @@
 package com.manage.manageproject;
 
 import com.manage.Logic.IdCheck;
+import com.manage.Logic.PhoneCheck;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -37,6 +38,10 @@ public class Main extends HttpServlet {
             // 비밀번호 체크 관련 로직
 
             // 폰 넘버 체크 관련 로직
+            PhoneCheck phoneCheck = new PhoneCheck();
+            if (!(phoneCheck.isPhone(phoneNumber))) {
+                throw new IllegalArgumentException("010-xxxx-xxxx 형식으로 입력해주세요");
+            }
 
             // 이메일 체크 관련 로직
 
