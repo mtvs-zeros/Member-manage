@@ -43,7 +43,10 @@ public class Main extends HttpServlet {
             rd.forward(req,resp);
 
 
-        }
+        }catch (IllegalArgumentException e) {
+            resp.sendError(400,"입력된 값의 길이가 짧습니다!!");
+        }catch (ArrayIndexOutOfBoundsException e) {
+            resp.sendError(305, "입력된 값의 길이가 너무 깁니다!!");
 
         }
 
