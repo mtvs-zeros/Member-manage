@@ -9,10 +9,15 @@ import java.util.ArrayList;
 public class IdCheck {
 
     // 아이디에 관련된 로직
-    public String Check(String id) throws ServletException,IllegalArgumentException {
+    public String Check(String id) throws ServletException, IllegalArgumentException, NoSuchFieldException {
         // Member 객체 안의 ID 값을 반복문을 통해서 조회한다. 조회 후 id값이 중복이 있는지 확인
 
 
+
+        // 아무것도 입력하지 않았을때
+        if ("".equals(id)){
+            throw new NoSuchFieldException();
+        }
 
         // 특수 문자 처리
         if (id.matches(".*[^a-zA-Z0-9].*")) {

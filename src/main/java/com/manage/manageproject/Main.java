@@ -45,7 +45,7 @@ public class Main extends HttpServlet {
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
 //            System.out.println(members);
-            req.setAttribute("id", id);
+            req.setAttribute("id", id); //"id" 속성을 새로 설정, id(dsa)
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
             rd.forward(req,resp);
@@ -61,7 +61,10 @@ public class Main extends HttpServlet {
             resp.sendError(305, "입력된 값의 길이가 너무 깁니다!!");
         }catch (ArithmeticException e){
             System.out.println("오류 발생");
-            resp.sendError(505, "특수문자는 입력할 수 없습니다!!");
+            resp.sendError(505, "공백이나 특수문자는 입력할 수 없습니다!!");
+        } catch (NoSuchFieldException e) {
+            System.out.println("오류 발생!!");
+            resp.sendError(405, "값이 입력되지 않았습니다.");
         }
 
     }

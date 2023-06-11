@@ -13,6 +13,10 @@
         <location>/exception</location>
     </error-page>
     <error-page>
+        <error-code>405</error-code>
+        <location>/exception</location>
+    </error-page>
+    <error-page>
         <error-code>305</error-code>
         <location>/exception</location>
     </error-page>
@@ -20,4 +24,5 @@
         <error-code>505</error-code>
         <location>/exception</location>
     </error-page>
+
 </web-app>
