@@ -17,7 +17,7 @@
     <input type="password" name="pw" placeholder="비밀번호를 입력해주세요">
     <input type="submit" value="비밀번호 확인"> <br>
     <label>전화번호 : </label>
-    <input type="text" name="phoneNumber" placeholder="010-xxxx-xxxx 형식으로 입력해주세요"> <br>
+    <input type="text" name="phoneNumber" placeholder="010-xxxx-xxxx 형식으로 입력해주세요">
     <input type="submit" value="전화번호 확인"> <br>
     <label>이메일 : </label>
     <input type="text" name="email" placeholder="이메일을 입력해주세요">
