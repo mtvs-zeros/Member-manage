@@ -13,9 +13,9 @@ import java.io.PrintWriter;
 public class Result extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = (String) req.getAttribute("id");
+        String pw = (String) req.getAttribute("pw");
 
-        System.out.println("id = " + id);
+        System.out.println("pw = " + pw);
 
         StringBuilder responseText = new StringBuilder();
         responseText.append("<!doctype html>\n")
@@ -23,7 +23,7 @@ public class Result extends HttpServlet {
                 .append("<head></head>\n")
                 .append("<body>\n")
                 .append("<h3 align=\"center\">")    //<h3 align="center">
-                .append(id)
+                .append(pw)
                 .append("님 환영합니다. </h3>\n")
                 .append("</body>\n")
                 .append("<html>");

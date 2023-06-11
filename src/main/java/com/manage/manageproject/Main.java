@@ -1,6 +1,7 @@
 package com.manage.manageproject;
 
 import com.manage.Logic.IdCheck;
+import com.manage.Logic.PwCheck;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -30,25 +31,22 @@ public class Main extends HttpServlet {
 
         try {
 //            ArrayList<Member> members = new ArrayList<>();
-            // 아이디 체크 관련 로직
-            IdCheck idCheck = new IdCheck();
-            idCheck.Check();
 
             // 비밀번호 체크 관련 로직
-
-            // 폰 넘버 체크 관련 로직
-
-            // 이메일 체크 관련 로직
-
-            // 닉네임 체크 관련 로직
+            PwCheck pwCheck = new PwCheck();
+            pwCheck.check(pw);
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
-            req.setAttribute("id", id);
+            req.setAttribute("pw", pw);
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
             rd.forward(req,resp);
 
-        }catch (ServletException e){
+
+        }catch (IllegalArgumentException e) {
+            resp.sendError(400,"입력된 값의 길이가 짧습니다!!");
+        }catch (ArrayIndexOutOfBoundsException e) {
+            resp.sendError(305, "입력된 값의 길이가 너무 깁니다!!");
 
         }
 
