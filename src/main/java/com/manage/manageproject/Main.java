@@ -37,7 +37,6 @@ public class Main extends HttpServlet {
             pwCheck.check(pw);
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
-            req.setAttribute("pw", pw);
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
             rd.forward(req,resp);
