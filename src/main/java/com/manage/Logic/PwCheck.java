@@ -1,9 +1,5 @@
 package com.manage.Logic;
 
-import com.manage.manageproject.Main;
-import com.manage.manageproject.Member;
-import jakarta.servlet.ServletException;
-
 public class PwCheck {
     public String check(String pw) throws IllegalArgumentException,ArrayIndexOutOfBoundsException {
         //-  5 ~ 20자 이내로 작성되도록 할 것
