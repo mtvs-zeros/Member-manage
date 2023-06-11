@@ -1,6 +1,7 @@
 package com.manage.manageproject;
 
 import com.manage.Logic.IdCheck;
+import com.manage.Logic.NickNameCheck;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -41,9 +42,12 @@ public class Main extends HttpServlet {
             // 이메일 체크 관련 로직
 
             // 닉네임 체크 관련 로직
+            NickNameCheck nickNameCheck = new NickNameCheck();
+            nickNameCheck.NickCheck(nickname);
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
             req.setAttribute("id", id);
+            req.setAttribute("nickname", nickname);
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
             rd.forward(req,resp);

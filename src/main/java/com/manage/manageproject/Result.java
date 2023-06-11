@@ -14,8 +14,10 @@ public class Result extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = (String) req.getAttribute("id");
+        String nickname = (String) req.getAttribute("nickname");
 
         System.out.println("id = " + id);
+        System.out.println("nickName= " + nickname);
 
         StringBuilder responseText = new StringBuilder();
         responseText.append("<!doctype html>\n")
