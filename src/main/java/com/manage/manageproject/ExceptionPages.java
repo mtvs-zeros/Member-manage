@@ -9,32 +9,32 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet("/result")
-public class Result extends HttpServlet {
+@WebServlet("/exception")
+public class ExceptionPages extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = (String) req.getAttribute("id");
+        String msg = req.getAttribute("jakarta.servlet.error.message").toString();
 
-        System.out.println("id = " + id);
+        System.out.println("msg = " + msg);
 
-        StringBuilder responseText = new StringBuilder();
-        responseText.append("<!doctype html>\n")
+        StringBuilder errorPage = new StringBuilder();
+        errorPage.append("<!doctype html>\n")
                 .append("<html>\n")
                 .append("<head></head>\n")
                 .append("<body>\n")
-                .append("<h3 align=\"center\">")    //<h3 align="center">
-                .append(id)
-                .append("님 환영합니다. </h3>\n\n\n")
+                .append("<h1 align=\"center\">\n")
+                .append(msg)
+                .append("</h1>\n")
                 .append("<div style=\"text-align: center;\">\n")
                 .append("<a href=\"http://localhost:8080/\" align=\"center\">회원가입 페이지로...</a>\n")
                 .append("</div>\n")
                 .append("</body>\n")
-                .append("<html>");
+                .append("</html>");
 
-        resp.setContentType("text/html; charset=UTF-8");
-
+        resp.setContentType("text/html;charset=UTF-8");
         PrintWriter out = resp.getWriter();
-        out.print(responseText);
+
+        out.write(errorPage.toString());
 
         out.flush();
         out.close();

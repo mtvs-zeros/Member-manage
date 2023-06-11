@@ -19,6 +19,7 @@ public class Main extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+//        Main.members.add(new Member("qlqlzbxkzl", "1234", "01022614492", "qlqlzbxkzl@naver.com", "이현석"));
         String id = req.getParameter("id");
         String pw = req.getParameter("pw");
 
@@ -33,7 +34,7 @@ public class Main extends HttpServlet {
 //            ArrayList<Member> members = new ArrayList<>();
             // 아이디 체크 관련 로직
             IdCheck idCheck = new IdCheck();
-            idCheck.Check();
+            idCheck.Check(id);
 
             // 비밀번호 체크 관련 로직
 
@@ -48,13 +49,24 @@ public class Main extends HttpServlet {
             // 닉네임 체크 관련 로직
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
+//            System.out.println(members);
             req.setAttribute("id", id);
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
             rd.forward(req,resp);
 
         }catch (ServletException e){
-
+            System.out.println("오류 발생!!!");
+            resp.sendError(500,"중복된 값이 존재합니다!!");
+        }catch (IllegalArgumentException e){
+            System.out.println("오류 발생!!!");
+            resp.sendError(400,"입력된 값의 길이가 짧습니다!!");
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("오류 발생");
+            resp.sendError(305, "입력된 값의 길이가 너무 깁니다!!");
+        }catch (ArithmeticException e){
+            System.out.println("오류 발생");
+            resp.sendError(505, "특수문자는 입력할 수 없습니다!!");
         }
 
     }
