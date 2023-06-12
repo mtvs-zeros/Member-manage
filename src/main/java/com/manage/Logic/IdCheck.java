@@ -14,10 +14,6 @@ public class IdCheck {
 
 
 
-        // 아무것도 입력하지 않았을때
-        if ("".equals(id)){
-            throw new NoSuchFieldException();
-        }
 
         // 특수 문자 처리
         if (id.matches(".*[^a-zA-Z0-9].*")) {
