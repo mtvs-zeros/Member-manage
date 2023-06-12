@@ -47,6 +47,7 @@ public class Main extends HttpServlet {
             nickNameCheck.NickCheck(nickname);
 
             members.add(new Member(id, pw, phoneNumber, email, nickname));
+            System.out.println(members);
             req.setAttribute("id", id);
 
             RequestDispatcher rd = req.getRequestDispatcher("/result");
@@ -59,7 +60,7 @@ public class Main extends HttpServlet {
         }catch (ArrayIndexOutOfBoundsException e){
             resp.sendError(305, "입력된 값의 길이가 너무 깁니다!!");
         }catch (ArithmeticException e){
-            resp.sendError(505, "공백이나 특수문자는 입력할 수 없습니다!!");
+            resp.sendError(505, "공백이나 특수문자 및 한글은 입력할 수 없습니다!!");
         } catch (NoSuchFieldException e) {
             resp.sendError(405, "값이 입력되지 않았습니다.");
         }
